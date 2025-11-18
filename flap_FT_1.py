@@ -125,10 +125,10 @@ def compute_drag_force (rho, A, cd , v_flap_WRF, v_air_WRF, n_WRF):
 
 # example of plates dictionary:
 plates = [
-    {"num": 1, "cd": 1.0, "area": 0.2, "length" : FLAP_LENGTH, "cop_frf": [0.0, 0.0, 0.0], "theta_frf" : np.deg2rad(25), "theta_dot_frf" : 0},
-    {"num": 2, "cd": 1.0, "area": 0.2, "length" : FLAP_LENGTH, "cop_frf": [0.0, 0.0, 0.0], "theta_frf" : np.deg2rad(25), "theta_dot_frf" : 0},
-    {"num": 3, "cd": 1.0, "area": 0.2, "length" : FLAP_LENGTH, "cop_frf": [0.0, 0.0, 0.0], "theta_frf" : np.deg2rad(-25), "theta_dot_frf" : 0},
-    {"num": 4, "cd": 1.0, "area": 0.2, "length" : FLAP_LENGTH, "cop_frf": [0.0, 0.0, 0.0], "theta_frf" : np.deg2rad(-25), "theta_dot_frf" : 0},
+    {"num": 1, "cd": 1.0, "area": 0.2, "length" : FLAP_LENGTH, "cop_frf": [0.0, 0.0, 0.0], "theta_frf" : np.deg2rad(0), "theta_dot_frf" : 0},
+    {"num": 2, "cd": 1.0, "area": 0.2, "length" : FLAP_LENGTH, "cop_frf": [0.0, 0.0, 0.0], "theta_frf" : np.deg2rad(0), "theta_dot_frf" : 0},
+    {"num": 3, "cd": 1.0, "area": 0.2, "length" : FLAP_LENGTH, "cop_frf": [0.0, 0.0, 0.0], "theta_frf" : np.deg2rad(0), "theta_dot_frf" : 0},
+    {"num": 4, "cd": 1.0, "area": 0.2, "length" : FLAP_LENGTH, "cop_frf": [0.0, 0.0, 0.0], "theta_frf" : np.deg2rad(0), "theta_dot_frf" : 0},
 ]
 
 def drag_forces_torques(plates, v_air_WRF, v_com_WRF, rpy_angles_WRF, rpy_rates_WRF, rho = AIR_DENSITY):
@@ -229,7 +229,7 @@ def drag_forces_torques(plates, v_air_WRF, v_com_WRF, rpy_angles_WRF, rpy_rates_
     return F,T, results
 
 
-F, T, results = drag_forces_torques(plates, [0,0,10], [0,0,0], [0,0,0], [0,0,0], rho=AIR_DENSITY)
+F, T, results = drag_forces_torques(plates, [0,0,10], [0,0,0], [0,0,1], [0,0,0], rho=AIR_DENSITY)
 
 df = pd.DataFrame(results).set_index("plate")
 
